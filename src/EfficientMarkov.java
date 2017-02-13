@@ -12,7 +12,7 @@ public class EfficientMarkov implements MarkovInterface<String>{
 
 	private static String PSEUDO_EOS = "";
 	private static long RANDOM_SEED = 1234;
-	private HashMap<String, ArrayList<String>> MarkMap = new HashMap<String, ArrayList<String>>();
+	private static HashMap<String, ArrayList<String>> MarkMap = new HashMap<String, ArrayList<String>>();
 
 	public EfficientMarkov(int order) {
 		myRandom = new Random(RANDOM_SEED);
@@ -24,27 +24,36 @@ public class EfficientMarkov implements MarkovInterface<String>{
 
 	@Override
 	public void setTraining(String text) {
-		myText = text;
+	myText = text;
 		// TODO Auto-generated method stub
 
 		//take last two letters and teh 3 gram seed and thn add the letter that follws the 3gram seed
 		//if 3 gram is last aka value = null(on efolllowing), we end the text with that 3 gram --- stop generating and end
 for(int k =0;k<=myText.length()-myOrder;k++){
-	if(k<myText.length()-myOrder){
+	/*if(k<myText.length()-myOrder){
 		myText = myText.substring(k,k+myOrder);
-		CharFollow = text.substring(k+myOrder+1,k+myOrder+1);
+		
 	}
 	else{
 		myText = myText.substring(k,k+(myOrder));
 		CharFollow = (PSEUDO_EOS);
+	}*/
+	
+	String TextKey; //creates temporary part of text that going to add
+	TextKey = myText.substring(k,k+myOrder); //sets temp text to a gram
+	
+	if(!(MarkMap.containsKey(myText))){ //initializes 
+	MarkMap.put(TextKey, new ArrayList<String>());
 	}
-	ArrayList<String> Chara = MarkMap.get(myText);
-	if(Chara==null){
-	Chara = new ArrayList<String>();
-	MarkMap.put(myText, Chara);
-	}
-	Chara.add(CharFollow);	
-	}
+		if(k+myOrder+1>=myText.length()){ //once intialized or if doesn't need to be, checks if its at the end of the text or not
+		CharFollow = PSEUDO_EOS;		//if at the end, the following character is PSEUDO_EOS
+		}
+		else{
+		CharFollow = text.substring(k+myOrder+1,k+myOrder+1); //if not at the end, the follow character is the following character
+		}
+	MarkMap.get(TextKey).add(CharFollow); //once spot created or not, char follow named, it can now add the folllowin character to the value spot for that key
+}
+	
 }	
 
 	public int size() {
@@ -106,8 +115,7 @@ for(int k =0;k<=myText.length()-myOrder;k++){
 		// TODO Auto-generated method stub
 
 	}
-
-
+	
 
 
 }
