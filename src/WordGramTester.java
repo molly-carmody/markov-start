@@ -80,28 +80,31 @@ public class WordGramTester {
 	}
 	@Test
 	public void testShiftAdd(){
-		String[] last1 = {"apple", "zebra", "mongoose",""};
-		String[] last2 = {"apple", "zebra", "mongoose", "duck"};
+		//expected output's strings aka resulting strings after ShiftAdd();
+		String[] last2 = {"apple", "zebra", "mongoose",""};
+		String[] last1 = {"apple", "zebra", "mongoose", "duck"};
 		String[] last3 = {"apple", "zebra","apple"};
-		String[] last4 = {"dog"};
+		String[] last4 = {"mongoose","dog"};
 		
-		String last11 = "";
-		String last22 = "duck";
-		String last33 = "apple";
-		String last44 = "dog";
-		
-		WordGram anew = new WordGram(last1,0,4); //remeber:size is how many elements in it
+		//expected output
+		//remeber:size is how many elements in it
+		WordGram anew = new WordGram(last1,0,4);
 		WordGram bnew = new WordGram(last2,0,4);
 		WordGram a2new = new WordGram(last3,0,3);
-		WordGram b2new = new WordGram(last4,2,0);
+		WordGram b2new = new WordGram(last4,0,2);
 		
+		//inputted
 		String[] words = {"apple", "zebra", "mongoose", "hat"};
 		WordGram a = new WordGram(words,0,4); //remeber:size is how many elements in it
 		WordGram b = new WordGram(words,0,4);
 		WordGram a2 = new WordGram(words,0,3);
-		WordGram b2 = new WordGram(words,2,0);
+		WordGram b2 = new WordGram(words,2,2);
 		
-		assertEquals("test last1 fail",bnew.toString(), b.shiftAdd(last22).toString());
+		assertEquals("test last1 fail",anew, a.shiftAdd("duck"));
+		assertEquals("test last2 fail",bnew, b.shiftAdd(""));
+		assertEquals("test last3 fail",a2new, a2.shiftAdd("apple"));
+		assertEquals("test last4 fail",b2new, b2.shiftAdd("dog"));
+		
 		
 	}
 	

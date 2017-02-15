@@ -93,7 +93,7 @@ return value;
 	}
 	
 	public WordGram shiftAdd(String last){
-		this.myWords[this.myWords.length] = last;
+		this.myWords[this.myWords.length-1] = last; //had to -1 because the last element number is actual 1 less than its size
 		WordGram wg = new WordGram(this.myWords,0,this.myWords.length);
 		return wg;
 		
