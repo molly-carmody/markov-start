@@ -4,7 +4,7 @@ import java.util.*;
 
 public class MarkovDriver {
 	public static void main(String[] args) {
-		String filename = "data/trump-convention.txt";
+		String filename = "data/trump-convention.txt";	
 		if (args.length > 0) {
 			filename = args[1];
 		}

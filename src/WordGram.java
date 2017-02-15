@@ -22,18 +22,18 @@ public class WordGram implements Comparable<WordGram> {
 		return myHash;
 	}
 	
-
+	@Override
 	public boolean equals(Object other){
 		if(!(other instanceof WordGram)){
 			return false;	
 		}
-		/*
+		//check if need this
 		WordGram wg = (WordGram) other;
 		for(int k=0; k<this.myWords.length;k++){
 			if(!wg.myWords[k].equals(this.myWords[k])){
 				return false;
 			}
-		}*/
+		}
 		if((this.hashCode())==(other.hashCode())){
 			return true;
 		}
@@ -106,7 +106,7 @@ return value;
 					this.myWords[k] = last;
 				}
 				else{
-				this.myWords[k] = this.myWords[k+1];
+				this.myWords[k] = this.myWords[k+1]; //updates current word to be the next word --> shifting all over to the left
 				}
 			}
 			WordGram wg = new WordGram(this.myWords,0,this.myWords.length);
