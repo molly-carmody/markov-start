@@ -34,7 +34,7 @@ for(int k =0;k<myText.length()-myOrder;k++){
 	String TextKey = myText.substring(k,k+myOrder); //sets temp text to a gram
 	
 	
-		if(k+myOrder+1>=myText.length()){ //once intialized or if doesn't need to be, checks if its at the end of the text or not
+		if((k+myOrder+2)>=myText.length()){ //once intialized or if doesn't need to be, checks if its at the end of the text or not
 		CharFollow = PSEUDO_EOS;		//if at the end, the following character is PSEUDO_EOS
 		}
 		else{
