@@ -36,8 +36,8 @@ for(int k =0;k<myText.length()-myOrder;k++){
 	if(!(MarkMap.containsKey(TextKey))){ //initializes 
 		MarkMap.put(TextKey, new ArrayList<String>());
 	}
-		if((k+myOrder+2)>=myText.length()){ //once intialized or if doesn't need to be, checks if its at the end of the text or not
-		CharFollow = PSEUDO_EOS;		//if at the end, the following character is PSEUDO_EOS
+		if((k+myOrder+1)>=myText.length()){ //once intialized or if doesn't need to be, checks if its at the end of the text or not
+		CharFollow = PSEUDO_EOS;	//if at the end, the following character is PSEUDO_EOS
 		}
 		else{
 		CharFollow = text.substring(k+myOrder,k+myOrder+1); //if not at the end, the follow character is the following character
@@ -68,7 +68,7 @@ for(int k =0;k<myText.length()-myOrder;k++){
 
 		for(int k=0; k < length-myOrder; k++){
 			ArrayList<String> follows = getFollows(current);
-			if (follows.size() == 0){
+			if (follows.size() == 0||follows==null){
 				break;
 			}
 
@@ -92,6 +92,7 @@ for(int k =0;k<myText.length()-myOrder;k++){
 
 	@Override
 	public ArrayList<String> getFollows(String key) {
+		
 		return MarkMap.get(key);
 	}
 	@Override
