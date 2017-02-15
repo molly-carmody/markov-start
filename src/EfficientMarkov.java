@@ -36,14 +36,16 @@ for(int k =0;k<myText.length()-myOrder;k++){
 	if(!(MarkMap.containsKey(TextKey))){ //initializes 
 		MarkMap.put(TextKey, new ArrayList<String>());
 	}
+	
 		if((k+myOrder+1)>=myText.length()){ //once intialized or if doesn't need to be, checks if its at the end of the text or not
 		CharFollow = PSEUDO_EOS;	//if at the end, the following character is PSEUDO_EOS
 		}
 		else{
-		CharFollow = text.substring(k+myOrder,k+myOrder+1); //if not at the end, the follow character is the following character
+		CharFollow = Character.toString(text.charAt(k+myOrder));  //)text.substring(k+myOrder, k+myOrder+1); //if not at the end, the follow character is the following character
 		}
-		
-	MarkMap.get(TextKey).add(CharFollow); //once spot created or not, char follow named, it can now add the folllowin character to the value spot for that key
+	
+	MarkMap.get(TextKey).add(CharFollow);
+	//once spot created or not, char follow named, it can now add the folllowin character to the value spot for that key
 }
 	
 }	
@@ -80,7 +82,7 @@ for(int k =0;k<myText.length()-myOrder;k++){
 				break;
 			}
 			sb.append(nextItem);
-			current = current.substring(1)+ nextItem;
+			current = current.substring(1) + nextItem;
 		}
 		return sb.toString();
 	}
