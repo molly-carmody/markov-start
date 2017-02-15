@@ -81,9 +81,8 @@ for(int k =0;k<myTextArray.length-myOrder;k++){
 	@Override
 	public ArrayList<String> getFollows(WordGram key) {
 		// TODO Auto-generated method stub
-		ArrayList<String> follows = new ArrayList<String>();
-		follows = EfWordMap.get(key);
-		return follows;
+		return EfWordMap.get(key);
+
 	
 	}
 

@@ -33,16 +33,16 @@ for(int k =0;k<myText.length()-myOrder;k++){
 	 //creates temporary part of text that going to add
 	String TextKey = myText.substring(k,k+myOrder); //sets temp text to a gram
 	
-	
+	if(!(MarkMap.containsKey(TextKey))){ //initializes 
+		MarkMap.put(TextKey, new ArrayList<String>());
+	}
 		if((k+myOrder+2)>=myText.length()){ //once intialized or if doesn't need to be, checks if its at the end of the text or not
 		CharFollow = PSEUDO_EOS;		//if at the end, the following character is PSEUDO_EOS
 		}
 		else{
 		CharFollow = text.substring(k+myOrder,k+myOrder+1); //if not at the end, the follow character is the following character
 		}
-		if(!(MarkMap.containsKey(TextKey))){ //initializes 
-			MarkMap.put(TextKey, new ArrayList<String>());
-		}
+		
 	MarkMap.get(TextKey).add(CharFollow); //once spot created or not, char follow named, it can now add the folllowin character to the value spot for that key
 }
 	
@@ -92,10 +92,7 @@ for(int k =0;k<myText.length()-myOrder;k++){
 
 	@Override
 	public ArrayList<String> getFollows(String key) {
-		// TODO Auto-generated method stub
-		ArrayList<String> follows = new ArrayList<String>();
-		follows = MarkMap.get(key);
-		return follows;
+		return MarkMap.get(key);
 	}
 	@Override
 	public int getOrder() {
