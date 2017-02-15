@@ -27,7 +27,7 @@ public class EfficientWordMarkov implements MarkovInterface<WordGram> {
 		String CharFollow;
 		WordGram WGKey;
 		
-for(int k =0;k<myTextArray.length-myOrder;k++){
+for(int k =0;k<myTextArray.length-myOrder+1;k++){
 	 //creates temporary part of text that going to add
 	WGKey =  new WordGram(myTextArray, k, myOrder); //sets temp text to a gram
 	if(!(EfWordMap.containsKey(WGKey))){ //initializes 
@@ -43,6 +43,9 @@ for(int k =0;k<myTextArray.length-myOrder;k++){
 }
 }	
 
+	public int size(){
+		return myText.length();
+	}
 	
 	
 
@@ -66,7 +69,7 @@ for(int k =0;k<myTextArray.length-myOrder;k++){
 			index = myRandom.nextInt(follows.size());
 			String nextItem = follows.get(index);
 			if (nextItem.equals(PSEUDO_EOS)) {
-				System.out.println("PSEUDO");
+				//System.out.println("PSEUDO");
 				break;
 			}
 			sb.append(nextItem + " ");
