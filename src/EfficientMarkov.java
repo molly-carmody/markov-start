@@ -70,6 +70,7 @@ public class EfficientMarkov implements MarkovInterface<String>{
 		String current = myText.substring(index, index + myOrder);
 		//System.out.printf("first random %d for '%s'\n",index,current);
 		sb.append(current);
+		if(!(length-myOrder==0)){
 		for(int k=0; k < length-myOrder; k++){
 			ArrayList<String> follows = getFollows(current);
 			if (follows.size() == 0||follows==null){
@@ -85,6 +86,7 @@ public class EfficientMarkov implements MarkovInterface<String>{
 			}
 			sb.append(nextItem);
 			current = current.substring(1) + nextItem;
+		}
 		}
 		return sb.toString();
 	}
