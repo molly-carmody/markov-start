@@ -32,7 +32,7 @@ public class EfficientMarkov implements MarkovInterface<String>{
 for(int k =0;k<myText.length()-myOrder;k++){
 	 //creates temporary part of text that going to add
 	String TextKey = myText.substring(k,k+myOrder); //sets temp text to a gram
-	
+
 	if(!(MarkMap.containsKey(TextKey))){ //initializes 
 		MarkMap.put(TextKey, new ArrayList<String>());
 	}
@@ -94,7 +94,9 @@ for(int k =0;k<myText.length()-myOrder;k++){
 
 	@Override
 	public ArrayList<String> getFollows(String key) {
-		
+		if(!MarkMap.containsKey(key)){
+			return null;
+		}
 		return MarkMap.get(key);
 	}
 	@Override
