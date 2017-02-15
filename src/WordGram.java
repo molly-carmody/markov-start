@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.Random;
 
 public class WordGram implements Comparable<WordGram> {
 	private String[] myWords;
@@ -82,7 +83,7 @@ return value;
 		String printString = "{";
 		for (int i=0;i<this.myWords.length;i++){
 			if(i<this.myWords.length-1){
-				printString = printString + this.myWords[i]+",";
+				printString = printString + this.myWords[i]+", ";
 			}
 			else{
 				printString = printString + this.myWords[i];
@@ -93,9 +94,25 @@ return value;
 	}
 	
 	public WordGram shiftAdd(String last){
-		this.myWords[this.myWords.length-1] = last; //had to -1 because the last element number is actual 1 less than its size
+		if((this.myWords.length)==0){
+		this.myWords[0] = last; //had to -1 because the last element number is actual 1 less than its size
 		WordGram wg = new WordGram(this.myWords,0,this.myWords.length);
 		return wg;
+		}
+
+		else{
+			for(int k=0; k<this.myWords.length;k++){
+				if(k==this.myWords.length-1){
+					this.myWords[k] = last;
+				}
+				else{
+				this.myWords[k] = this.myWords[k+1];
+				}
+			}
+			WordGram wg = new WordGram(this.myWords,0,this.myWords.length);
+			return wg;
+		
+		}
 		
 	}
 

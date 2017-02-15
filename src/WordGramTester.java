@@ -73,18 +73,18 @@ public class WordGramTester {
 		WordGram a2 = new WordGram(words,0,3);
 		WordGram b2 = new WordGram(words,2,0);
 		//assertEquals(message, expected, actual)
-	assertEquals("test a fail", "{apple,zebra,mongoose,hat}", a.toString());
+	assertEquals("test a fail", "{apple, zebra, mongoose, hat}", a.toString());
 	assertEquals("test b fail", a.toString(), b.toString());
-	assertEquals("test a2 fail", "{apple,zebra,mongoose}", a2.toString());
+	assertEquals("test a2 fail", "{apple, zebra, mongoose}", a2.toString());
 	assertEquals("test b2 fail", "{}", b2.toString());
 	}
 	@Test
 	public void testShiftAdd(){
 		//expected output's strings aka resulting strings after ShiftAdd();
-		String[] last2 = {"apple", "zebra", "mongoose",""};
-		String[] last1 = {"apple", "zebra", "mongoose", "duck"};
-		String[] last3 = {"apple", "zebra","apple"};
-		String[] last4 = {"mongoose","dog"};
+		String[] last2 = {"zebra", "mongoose", "hat", ""};
+		String[] last1 = {"zebra", "mongoose", "hat", "duck"};
+		String[] last3 = {"zebra", "mongoose","apple"};
+		String[] last4 = {"hat","dog"};
 		
 		//expected output
 		//remeber:size is how many elements in it

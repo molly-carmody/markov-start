@@ -40,7 +40,7 @@ for(int k =0;k<=myText.length()-myOrder;k++){
 		CharFollow = PSEUDO_EOS;		//if at the end, the following character is PSEUDO_EOS
 		}
 		else{
-		CharFollow = text.substring(k+myOrder+1,k+myOrder+1); //if not at the end, the follow character is the following character
+		CharFollow = text.substring(k+myOrder,k+myOrder+1); //if not at the end, the follow character is the following character
 		}
 	MarkMap.get(TextKey).add(CharFollow); //once spot created or not, char follow named, it can now add the folllowin character to the value spot for that key
 }
@@ -99,11 +99,14 @@ for(int k =0;k<=myText.length()-myOrder;k++){
 	@Override
 	public int getOrder() {
 		// TODO Auto-generated method stub
-		return 0;
+		return myOrder;
 	}
+
 	@Override
 	public void setSeed(long seed) {
 		// TODO Auto-generated method stub
+		RANDOM_SEED = seed;
+		myRandom = new Random(RANDOM_SEED);
 
 	}
 	
