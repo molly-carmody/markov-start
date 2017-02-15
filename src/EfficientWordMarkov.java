@@ -27,7 +27,7 @@ public class EfficientWordMarkov implements MarkovInterface<WordGram> {
 		String CharFollow;
 		WordGram WGKey;
 		
-for(int k =0;k<myTextArray.length-myOrder+1;k++){
+for(int k =0;k<myTextArray.length-myOrder;k++){
 	 //creates temporary part of text that going to add
 	WGKey =  new WordGram(myTextArray, k, myOrder); //sets temp text to a gram
 	if(!(EfWordMap.containsKey(WGKey))){ //initializes 

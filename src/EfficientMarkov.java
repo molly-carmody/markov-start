@@ -29,7 +29,7 @@ public class EfficientMarkov implements MarkovInterface<String>{
 
 		//take last two letters and teh 3 gram seed and thn add the letter that follws the 3gram seed
 		//if 3 gram is last aka value = null(on efolllowing), we end the text with that 3 gram --- stop generating and end
-for(int k =0;k<myText.length()-myOrder+1;k++){
+for(int k =0;k<myText.length()-myOrder;k++){
 	 //creates temporary part of text that going to add
 	String TextKey = myText.substring(k,k+myOrder); //sets temp text to a gram
 	
