@@ -65,5 +65,44 @@ public class WordGramTester {
 		assertEquals("fail super",a.compareTo(a2) > 0, true);
 		assertEquals("fail empty",b2.compareTo(a2) < 0, true);
 	}
-
+	@Test
+	public void testToString(){
+		String[] words = {"apple", "zebra", "mongoose", "hat"};
+		WordGram a = new WordGram(words,0,4); //remeber:size is how many elements in it
+		WordGram b = new WordGram(words,0,4);
+		WordGram a2 = new WordGram(words,0,3);
+		WordGram b2 = new WordGram(words,2,0);
+		//assertEquals(message, expected, actual)
+	assertEquals("test a fail", "{apple,zebra,mongoose,hat}", a.toString());
+	assertEquals("test b fail", a.toString(), b.toString());
+	assertEquals("test a2 fail", "{apple,zebra,mongoose}", a2.toString());
+	assertEquals("test b2 fail", "{}", b2.toString());
+	}
+	@Test
+	public void testShiftAdd(){
+		String[] last1 = {"apple", "zebra", "mongoose",""};
+		String[] last2 = {"apple", "zebra", "mongoose", "duck"};
+		String[] last3 = {"apple", "zebra","apple"};
+		String[] last4 = {"dog"};
+		
+		String last11 = "";
+		String last22 = "duck";
+		String last33 = "apple";
+		String last44 = "dog";
+		
+		WordGram anew = new WordGram(last1,0,4); //remeber:size is how many elements in it
+		WordGram bnew = new WordGram(last2,0,4);
+		WordGram a2new = new WordGram(last3,0,3);
+		WordGram b2new = new WordGram(last4,2,0);
+		
+		String[] words = {"apple", "zebra", "mongoose", "hat"};
+		WordGram a = new WordGram(words,0,4); //remeber:size is how many elements in it
+		WordGram b = new WordGram(words,0,4);
+		WordGram a2 = new WordGram(words,0,3);
+		WordGram b2 = new WordGram(words,2,0);
+		
+		assertEquals("test last1 fail",bnew.toString(), b.shiftAdd(last22).toString());
+		
+	}
+	
 }
