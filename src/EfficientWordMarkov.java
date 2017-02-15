@@ -33,7 +33,7 @@ for(int k =0;k<myTextArray.length-myOrder;k++){
 	if(!(EfWordMap.containsKey(WGKey))){ //initializes 
 		EfWordMap.put(WGKey, new ArrayList<String>());
 	}
-		if((k+myOrder+1)>text.length()){ //once intialized or if doesn't need to be, checks if its at the end of the text or not
+		if((k+myOrder+1)>=text.length()){ //once intialized or if doesn't need to be, checks if its at the end of the text or not
 		CharFollow = PSEUDO_EOS;		//if at the end, the following character is PSEUDO_EOS
 		}
 		else{
