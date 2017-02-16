@@ -26,6 +26,7 @@ public class EfficientWordMarkov implements MarkovInterface<WordGram> {
 		myTextArray = text.split("\\s+");
 		String CharFollow;
 		WordGram WGKey;
+		EfWordMap = new HashMap<WordGram, ArrayList<String>>();
 		
 for(int k =0;k<myTextArray.length-myOrder;k++){
 	 //creates temporary part of text that going to add

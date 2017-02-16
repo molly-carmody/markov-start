@@ -25,6 +25,7 @@ public class EfficientMarkov implements MarkovInterface<String>{
 	@Override
 	public void setTraining(String text) {
 	myText = text;
+	MarkMap = new HashMap<String, ArrayList<String>>();
 		// TODO Auto-generated method stub
 
 		//take last two letters and teh 3 gram seed and thn add the letter that follws the 3gram seed

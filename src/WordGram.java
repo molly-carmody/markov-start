@@ -80,7 +80,7 @@ return value;
 	
 
 	public String toString(){
-		String printString = "{";
+		String printString = "";
 		for (int i=0;i<this.myWords.length;i++){
 			if(i<this.myWords.length-1){
 				printString = printString + this.myWords[i]+", ";
@@ -89,8 +89,8 @@ return value;
 				printString = printString + this.myWords[i];
 			}
 		}
-		printString = printString +"}";
-		return printString;
+		
+		return "{"+printString+"}";
 	}
 	
 	public WordGram shiftAdd(String last){
