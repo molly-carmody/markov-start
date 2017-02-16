@@ -56,8 +56,13 @@ for(int k =0;k<myTextArray.length-myOrder;k++){
 		String[] myTextArray = myText.split("\\s+");
 		// TODO Auto-generated method stub
 		StringBuilder sb = new StringBuilder();
-		int index = myRandom.nextInt(myTextArray.length - myOrder);
-
+		int index; 
+		if(!(myTextArray.length-myOrder ==0)){
+			index = myRandom.nextInt(myTextArray.length - myOrder);
+		}
+		else{
+			return "";
+		}
 		WordGram current = new WordGram(myTextArray, index, myOrder);
 		//System.out.printf("first random %d for '%s'\n",index,current);
 		sb.append(current + " ");

@@ -81,7 +81,7 @@ public class EfficientMarkov implements MarkovInterface<String>{
 		if(!(length-myOrder==0)){
 		for(int k=0; k < length-myOrder; k++){
 			ArrayList<String> follows = getFollows(current);
-			if (follows.size() == 0||follows==null){
+			if (follows.size() == 0){
 				break;
 			}
 
