@@ -63,7 +63,7 @@ public class EfficientWordMarkov implements MarkovInterface<WordGram> {
 
 		WordGram current = new WordGram(myTextArray, index, myOrder);
 		//System.out.printf("first random %d for '%s'\n",index,current);
-		sb.append(current.toString());
+		sb.append(current);
 
 		for(int k=0; k <length-myOrder; k++){
 			ArrayList<String> follows = getFollows(current);
@@ -77,7 +77,8 @@ public class EfficientWordMarkov implements MarkovInterface<WordGram> {
 				//System.out.println("PSEUDO");
 				break;
 			}
-			sb.append(" " + nextItem);
+			sb.append(" ");
+			sb.append(nextItem);
 			current = current.shiftAdd(nextItem);
 		}
 		return sb.toString();
