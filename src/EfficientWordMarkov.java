@@ -36,11 +36,10 @@ for(int k =0;k<myTextArray.length-myOrder;k++){
 	}
 		if((k+myOrder+1)>=text.length()){ //once intialized or if doesn't need to be, checks if its at the end of the text or not
 		CharFollow = PSEUDO_EOS;//if at the end, the following character is PSEUDO_EOS
-		WGKey.shiftAdd("");
+		
 		}
 		else{
 		CharFollow = myTextArray[k+myOrder]; //if not at the end, the follow character is the following character
-		WGKey.shiftAdd(CharFollow);
 		}
 		EfWordMap.get(WGKey).add(CharFollow); //once spot created or not, char follow named, it can now add the folllowin character to the value spot for that key
 }
@@ -75,7 +74,7 @@ for(int k =0;k<myTextArray.length-myOrder;k++){
 				//System.out.println("PSEUDO");
 				break;
 			}
-			sb.append(" " + nextItem);
+			sb.append(nextItem+" ");
 			current = current.shiftAdd(nextItem);
 		}
 		return sb.toString();
@@ -88,7 +87,7 @@ for(int k =0;k<myTextArray.length-myOrder;k++){
 	public ArrayList<String> getFollows(WordGram key) {
 		// TODO Auto-generated method stub
 		if(!EfWordMap.containsKey(key)){
-			return new ArrayList<String>();
+			return null;
 		}
 		return EfWordMap.get(key);
 
