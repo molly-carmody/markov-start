@@ -6,7 +6,7 @@ public class EfficientWordMarkov implements MarkovInterface<WordGram> {
 	private String myText;
 	private String[] myTextArray;
 	private Random myRandom;
-	private static int myOrder;
+	private int myOrder;
 	
 	private  HashMap<WordGram, ArrayList<String>> EfWordMap = new HashMap<WordGram, ArrayList<String>>();
 	private  String PSEUDO_EOS = "";
@@ -18,7 +18,7 @@ public class EfficientWordMarkov implements MarkovInterface<WordGram> {
 	}
 	
 	public EfficientWordMarkov(){
-		this(myOrder);
+		this(3);
 	}
 	
 	
@@ -35,12 +35,12 @@ public class EfficientWordMarkov implements MarkovInterface<WordGram> {
 				if(!(EfWordMap.containsKey(WGKey))){ //initializes 
 					EfWordMap.put(WGKey, new ArrayList<String>());
 				}
-				String CharFollow;
-				if(k+myOrder>=myTextArray.length){ //once intialized or if doesn't need to be, checks if its at the end of the text or not
+				String CharFollow = "";
+			 if(k+myOrder>myTextArray.length){ //once intialized or if doesn't need to be, checks if its at the end of the text or not
 					CharFollow=(PSEUDO_EOS);//if at the end, the following character is PSEUDO_EOS
 
 				}
-				else{
+				if (k+myOrder<myTextArray.length){
 					
 					CharFollow=(myTextArray[k+myOrder]); //if not at the end, the follow character is the following character
 				}
@@ -52,7 +52,7 @@ public class EfficientWordMarkov implements MarkovInterface<WordGram> {
 
 
 	public int size(){
-		return myTextArray.length;
+		return myText.length();
 	}
 	@Override
 	public String getRandomText(int length) {
