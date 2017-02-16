@@ -61,7 +61,7 @@ public class EfficientWordMarkov implements MarkovInterface<WordGram> {
 		StringBuilder sb = new StringBuilder();
 		int index = myRandom.nextInt(myTextArray.length - myOrder);
 
-		WordGram current = new WordGram(myTextArray, 0, myOrder);
+		WordGram current = new WordGram(myTextArray, index, myOrder);
 		//System.out.printf("first random %d for '%s'\n",index,current);
 		sb.append(current + " ");
 
