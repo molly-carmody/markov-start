@@ -66,7 +66,14 @@ public class EfficientMarkov implements MarkovInterface<String>{
 	public String getRandomText(int length) {
 
 		StringBuilder sb = new StringBuilder();
-		int index = myRandom.nextInt(myText.length() - myOrder);
+		
+		int index;
+		if(!(myText.length()-myOrder ==0)){
+			index = myRandom.nextInt(myText.length() - myOrder);
+		}
+		else{
+			return "";
+		}
 
 		String current = myText.substring(index, index + myOrder);
 		//System.out.printf("first random %d for '%s'\n",index,current);
