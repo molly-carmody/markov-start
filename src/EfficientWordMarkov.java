@@ -7,45 +7,49 @@ public class EfficientWordMarkov implements MarkovInterface<WordGram> {
 	private String[] myTextArray;
 	private Random myRandom;
 	private int myOrder;
-
+	
 	private  HashMap<WordGram, ArrayList<String>> EfWordMap = new HashMap<WordGram, ArrayList<String>>();
 	private  String PSEUDO_EOS = "";
 	private long RANDOM_SEED = 1234;
-
+	
 	public EfficientWordMarkov(int order) {
 		myRandom = new Random(RANDOM_SEED);
 		myOrder = order;
 	}
-
+	
 	public EfficientWordMarkov(){
 		this(3);
 	}
+	
+	
+		public void setTraining(String text) {
+			myText = text;
+			myTextArray = text.split("\\s+");
 
-	public void setTraining(String text) {
-		myText = text;
-		myTextArray = text.split("\\s+");
+			WordGram WGKey;
+			EfWordMap = new HashMap<WordGram, ArrayList<String>>();
 
-		//WordGram WGKey;
-		EfWordMap = new HashMap<WordGram, ArrayList<String>>();
+			for(int k =0;k<myTextArray.length-myOrder+1;k++){
+				//creates temporary part of text that going to add
+				WGKey =  new WordGram(myTextArray, k, myOrder); //sets temp text to a gram
+				if(!(EfWordMap.containsKey(WGKey))){ //initializes 
+					EfWordMap.put(WGKey, new ArrayList<String>());
+				}
+				String CharFollow;
+				if(k+myOrder>=myTextArray.length){ //once intialized or if doesn't need to be, checks if its at the end of the text or not
+					CharFollow=(PSEUDO_EOS);//if at the end, the following character is PSEUDO_EOS
 
-		for(int k =0;k<myTextArray.length-myOrder+1;k++){
-			//creates temporary part of text that going to add
-			WordGram WGKey =  new WordGram(myTextArray, k, myOrder); //sets temp text to a gram
-			if(!(EfWordMap.containsKey(WGKey))){ //initializes 
-				EfWordMap.put(WGKey, new ArrayList<String>());
+				}
+				else{
+					
+					CharFollow=(myTextArray[k+myOrder]); //if not at the end, the follow character is the following character
+				}
+				EfWordMap.get(WGKey).add(CharFollow);
+				//once spot created or not, char follow named, it can now add the folllowin character to the value spot for that key
 			}
-			ArrayList<String> CharFollow = EfWordMap.get(WGKey);
-			if(k+myOrder>=myTextArray.length){ //once intialized or if doesn't need to be, checks if its at the end of the text or not
-				CharFollow.add(PSEUDO_EOS);//if at the end, the following character is PSEUDO_EOS
+		}	
+		 //once spot created or not, char follow named, it can now add the folllowin character to the value spot for that key
 
-			}
-			else{
-				String charFoll = myTextArray[k+myOrder];
-				CharFollow.add(charFoll); //if not at the end, the follow character is the following character
-			}
-			//once spot created or not, char follow named, it can now add the folllowin character to the value spot for that key
-		}
-	}	
 
 	public int size(){
 		return myText.length();
@@ -59,11 +63,11 @@ public class EfficientWordMarkov implements MarkovInterface<WordGram> {
 
 		WordGram current = new WordGram(myTextArray, index, myOrder);
 		//System.out.printf("first random %d for '%s'\n",index,current);
-		sb.append(current + " ");
+		sb.append(current);
 
 		for(int k=0; k <length-myOrder; k++){
 			ArrayList<String> follows = getFollows(current);
-			if (follows.size() == 0||follows==null){
+			if (follows.size() == 0){
 				break;
 			}
 
@@ -73,13 +77,13 @@ public class EfficientWordMarkov implements MarkovInterface<WordGram> {
 				//System.out.println("PSEUDO");
 				break;
 			}
-			sb.append(nextItem+" ");
+			sb.append(" "+nextItem);
 			current = current.shiftAdd(nextItem);
 		}
 		return sb.toString();
+	
 
-
-
+	
 	}
 
 	@Override
@@ -88,7 +92,7 @@ public class EfficientWordMarkov implements MarkovInterface<WordGram> {
 
 		return EfWordMap.get(key);
 
-
+	
 	}
 
 	@Override
