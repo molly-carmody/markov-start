@@ -6,7 +6,7 @@ public class EfficientWordMarkov implements MarkovInterface<WordGram> {
 	private String myText;
 	private String[] myTextArray;
 	private Random myRandom;
-	private int myOrder;
+	private static int myOrder;
 	
 	private  HashMap<WordGram, ArrayList<String>> EfWordMap = new HashMap<WordGram, ArrayList<String>>();
 	private  String PSEUDO_EOS = "";
@@ -18,7 +18,7 @@ public class EfficientWordMarkov implements MarkovInterface<WordGram> {
 	}
 	
 	public EfficientWordMarkov(){
-		this(3);
+		this(myOrder);
 	}
 	
 	
@@ -52,7 +52,7 @@ public class EfficientWordMarkov implements MarkovInterface<WordGram> {
 
 
 	public int size(){
-		return myText.length();
+		return myTextArray.length;
 	}
 	@Override
 	public String getRandomText(int length) {
@@ -63,7 +63,7 @@ public class EfficientWordMarkov implements MarkovInterface<WordGram> {
 
 		WordGram current = new WordGram(myTextArray, index, myOrder);
 		//System.out.printf("first random %d for '%s'\n",index,current);
-		sb.append(current);
+		sb.append(current.toString());
 
 		for(int k=0; k <length-myOrder; k++){
 			ArrayList<String> follows = getFollows(current);
@@ -77,7 +77,7 @@ public class EfficientWordMarkov implements MarkovInterface<WordGram> {
 				//System.out.println("PSEUDO");
 				break;
 			}
-			sb.append(" "+nextItem);
+			sb.append(" " + nextItem);
 			current = current.shiftAdd(nextItem);
 		}
 		return sb.toString();
@@ -89,8 +89,8 @@ public class EfficientWordMarkov implements MarkovInterface<WordGram> {
 	@Override
 	public ArrayList<String> getFollows(WordGram key) {
 		// TODO Auto-generated method stub
-
-		return EfWordMap.get(key);
+ArrayList<String> following = EfWordMap.get(key);
+		return following;
 
 	
 	}
