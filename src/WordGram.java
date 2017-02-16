@@ -7,7 +7,7 @@ public class WordGram implements Comparable<WordGram> {
 
 	public WordGram(String[] source, int start, int size){
 		myWords = new String[size];
-		for(int k=start;k<size+start;k++){
+		for(int k=0;k<myWords.length;k++){
 			this.myWords[k] = source[k+ start];//put at 0th element in word, but the start from source
 		}    
 	}
