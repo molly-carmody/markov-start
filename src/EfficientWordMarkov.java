@@ -35,16 +35,16 @@ public class EfficientWordMarkov implements MarkovInterface<WordGram> {
 				if(!(EfWordMap.containsKey(WGKey))){ //initializes 
 					EfWordMap.put(WGKey, new ArrayList<String>());
 				}
-				String CharFollow = "";
-			 if(k+myOrder>myTextArray.length){ //once intialized or if doesn't need to be, checks if its at the end of the text or not
-					CharFollow=(PSEUDO_EOS);//if at the end, the following character is PSEUDO_EOS
+			
+			 if(k+myOrder>=myTextArray.length){ //once intialized or if doesn't need to be, checks if its at the end of the text or not
+				 EfWordMap.get(WGKey).add(PSEUDO_EOS);//if at the end, the following character is PSEUDO_EOS
 
 				}
-				if (k+myOrder<myTextArray.length){
+			 else{
 					
-					CharFollow=(myTextArray[k+myOrder]); //if not at the end, the follow character is the following character
+				 EfWordMap.get(WGKey).add(myTextArray[k+myOrder]); //if not at the end, the follow character is the following character
 				}
-				EfWordMap.get(WGKey).add(CharFollow);
+				
 				//once spot created or not, char follow named, it can now add the folllowin character to the value spot for that key
 			}
 		}	
