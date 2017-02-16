@@ -25,25 +25,24 @@ public class EfficientWordMarkov implements MarkovInterface<WordGram> {
 		myText = text;
 		myTextArray = text.split("\\s+");
 
-		WordGram WGKey;
+		//WordGram WGKey;
 		EfWordMap = new HashMap<WordGram, ArrayList<String>>();
 
 		for(int k =0;k<myTextArray.length-myOrder+1;k++){
 			//creates temporary part of text that going to add
-			WGKey =  new WordGram(myTextArray, k, myOrder); //sets temp text to a gram
+			WordGram WGKey =  new WordGram(myTextArray, k, myOrder); //sets temp text to a gram
 			if(!(EfWordMap.containsKey(WGKey))){ //initializes 
 				EfWordMap.put(WGKey, new ArrayList<String>());
 			}
-			String CharFollow;
+			ArrayList<String> CharFollow = EfWordMap.get(WGKey);
 			if(k+myOrder>=myTextArray.length){ //once intialized or if doesn't need to be, checks if its at the end of the text or not
-				CharFollow=(PSEUDO_EOS);//if at the end, the following character is PSEUDO_EOS
+				CharFollow.add(PSEUDO_EOS);//if at the end, the following character is PSEUDO_EOS
 
 			}
 			else{
 				String charFoll = myTextArray[k+myOrder];
-				CharFollow=(charFoll); //if not at the end, the follow character is the following character
+				CharFollow.add(charFoll); //if not at the end, the follow character is the following character
 			}
-			EfWordMap.get(WGKey).add(CharFollow);
 			//once spot created or not, char follow named, it can now add the folllowin character to the value spot for that key
 		}
 	}	
