@@ -13,18 +13,13 @@ public class WordGram implements Comparable<WordGram> {
 	}
 
 	public int hashCode(){
-		 int hash = 0;
-	        for(int k=0; k < myWords.length; k++) {
-	            hash += myWords[k].hashCode();
-	        }
-	        myHash = hash;
-	        return myHash;
-		/*myHash = 0;
+		
+		myHash = 0;
 		for(int k=0; k < this.myWords.length; k++) {
 			myHash = 73*myHash + this.myWords[k].hashCode();
 		}
 
-		return myHash;*/
+		return myHash;
 	}
 	
 	@Override
