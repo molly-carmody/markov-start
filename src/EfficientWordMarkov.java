@@ -8,9 +8,9 @@ public class EfficientWordMarkov implements MarkovInterface<WordGram> {
 	private Random myRandom;
 	private int myOrder;
 	
-	private static HashMap<WordGram, ArrayList<String>> EfWordMap = new HashMap<WordGram, ArrayList<String>>();
-	private static String PSEUDO_EOS = "";
-	private static long RANDOM_SEED = 1234;
+	private  HashMap<WordGram, ArrayList<String>> EfWordMap = new HashMap<WordGram, ArrayList<String>>();
+	private  String PSEUDO_EOS = "";
+	private long RANDOM_SEED = 1234;
 	
 	public EfficientWordMarkov(int order) {
 		myRandom = new Random(RANDOM_SEED);

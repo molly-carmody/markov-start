@@ -10,9 +10,9 @@ public class EfficientMarkov implements MarkovInterface<String>{
 	private Random myRandom;
 	private int myOrder;
 
-	private static String PSEUDO_EOS = "";
-	private static long RANDOM_SEED = 1234;
-	private static HashMap<String, ArrayList<String>> MarkMap = new HashMap<String, ArrayList<String>>();
+	private String PSEUDO_EOS = "";
+	private long RANDOM_SEED = 1234;
+	private HashMap<String, ArrayList<String>> MarkMap = new HashMap<String, ArrayList<String>>();
 
 	public EfficientMarkov(int order) {
 		myRandom = new Random(RANDOM_SEED);
